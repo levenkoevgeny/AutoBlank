@@ -14,9 +14,9 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://autoblank.by/',
-    'http://autoblank.by/',
-    'https://www.autoblank.by/',
+    'https://autoblank.by',
+    'http://autoblank.by',
+    'https://www.autoblank.by',
 
 ]
 
