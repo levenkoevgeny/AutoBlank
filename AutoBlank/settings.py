@@ -15,6 +15,9 @@ ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
     'https://autoblank.by/',
+    'http://autoblank.by/',
+    'https://www.autoblank.by/',
+
 ]
 
 # Application definition
