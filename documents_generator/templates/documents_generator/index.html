@@ -3,212 +3,228 @@
 {% block title %}Главная{% endblock %}
 
 {% block content %}
+    <header>
+        <div class="logo">&#128196;</div>
+        <h1>Генератор документов</h1>
+        <p>Заполните форму для генерации готового документа</p>
+    </header>
 
-    <div class="mt-3"></div>
+    <form action="{% url 'gai:generate_document' %}" method="POST" id="contractForm">
+        {% csrf_token %}
 
-    <div>
-        <div>
-            <select class="form-select" id="document_kind" style="width: 100%">
-                <option selected>Выберите вид документа</option>
-                <option value="dogov_kup_prod">Договор купли продажи</option>
-            </select>
+        <div class="form-container">
+            <div class="section">
+                <div class="section-header">
+                    <span class="icon">&#128205;</span>
+                    Тип документа
+                </div>
+                <div class="section-body">
+                    <div class="form-row single">
+                        <div class="form-group">
+                            <label>Документ</label>
+                            <select class="form-control" id="document_kind">
+                                <option selected disabled>Договор купли-продажи автомобиля</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <span class="icon">&#128205;</span>
+                    Место заключения договора
+                </div>
+                <div class="section-body">
+                    <div class="form-row single">
+                        <div class="form-group">
+                            <label>Город</label>
+                            <input type="text" name="agreement_place" value="Минск">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <span class="icon">&#128100;</span>
+                    Продавец
+                </div>
+                <div class="section-body">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Фамилия</label>
+                            <input type="text" name="salesman_lastname" value="Иванов">
+                        </div>
+                        <div class="form-group">
+                            <label>Имя</label>
+                            <input type="text" name="salesman_firstname" value="Иван">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Отчество</label>
+                            <input type="text" name="salesman_patronymic" value="Иванович">
+                        </div>
+                        <div class="form-group">
+                            <label>Идентификационный номер</label>
+                            <input type="text" name="salesman_id_number" value="" placeholder="523M3453453453">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Серия и номер паспорта</label>
+                            <input type="text" name="salesman_passport_number" value="BY23412312">
+                        </div>
+                        <div class="form-group">
+                            <label>Дата выдачи паспорта</label>
+                            <input type="date" name="salesman_passport_issue_date">
+                        </div>
+                    </div>
+                    <div class="form-row single">
+                        <div class="form-group">
+                            <label>Орган выдачи паспорта</label>
+                            <input type="text" name="salesman_passport_issue_place" value="Ленинским РУВД г. Минска">
+                        </div>
+                    </div>
+                    <div class="form-row single">
+                        <div class="form-group">
+                            <label>Место жительства</label>
+                            <input type="text" name="salesman_residence_place" value="г. Минск, ул. Радужная, дом 10, кор. 2, кв. 28">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <span class="icon">&#128663;</span>
+                    Автомобиль
+                </div>
+                <div class="section-body">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Тип ТС</label>
+                            <input type="text" name="type_car" value="легковой автомобиль" placeholder="легковой автомобиль">
+                        </div>
+                        <div class="form-group">
+                            <label>Марка, модель</label>
+                            <input type="text" name="model_car" value="TOYOTA CAMRY" placeholder="TOYOTA CAMRY">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Год выпуска</label>
+                            <input type="number" name="year_car" value="2020" placeholder="2020" min="1900" max="2099">
+                        </div>
+                        <div class="form-group">
+                            <label>VIN номер (№ кузова или шасси)</label>
+                            <input type="text" name="vin_car" value="ZAR93700003163064" placeholder="XTA210990J5432101" maxlength="17" style="text-transform: uppercase;">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Серия и номер техпаспорта</label>
+                            <input type="text" name="reg_cert_number" value="MAA123567" placeholder="6TE 0007756">
+                        </div>
+                        <div class="form-group">
+                            <label>Дата выдачи техпаспорта</label>
+                            <input type="date" name="reg_cert_issue_date">
+                        </div>
+                    </div>
+                    <div class="form-row single">
+                        <div class="form-group">
+                            <label>Наименование органа, выдавшего техпаспорт</label>
+                            <input type="text" name="reg_cert_issue_place" value="РЕП ДАИ" placeholder="РЕП ДАИ">
+                        </div>
+                    </div>
+                    <div class="form-row single">
+                        <div class="form-group">
+                            <label>Стоимость автомобиля</label>
+                            <input type="number" name="price" value="" placeholder="15000" min="0" step="0.01">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <span class="icon">&#128100;</span>
+                    Покупатель
+                </div>
+                <div class="section-body">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Фамилия</label>
+                            <input type="text" name="buyer_lastname" value="Петров">
+                        </div>
+                        <div class="form-group">
+                            <label>Имя</label>
+                            <input type="text" name="buyer_firstname" value="Петр">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Отчество</label>
+                            <input type="text" name="buyer_patronymic" value="Петрович">
+                        </div>
+                        <div class="form-group">
+                            <label>Идентификационный номер</label>
+                            <input type="text" name="buyer_id_number" value="" placeholder="523M3453453453">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Серия и номер паспорта</label>
+                            <input type="text" name="buyer_passport_number" value="BY23412312">
+                        </div>
+                        <div class="form-group">
+                            <label>Дата выдачи паспорта</label>
+                            <input type="date" name="buyer_passport_issue_date">
+                        </div>
+                    </div>
+                    <div class="form-row single">
+                        <div class="form-group">
+                            <label>Орган выдачи паспорта</label>
+                            <input type="text" name="buyer_passport_issue_place" value="Ленинским РУВД г. Минска">
+                        </div>
+                    </div>
+                    <div class="form-row single">
+                        <div class="form-group">
+                            <label>Место жительства</label>
+                            <input type="text" name="buyer_residence_place" value="г. Минск, ул. Радужная, дом 10, кор. 2, кв. 28">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <span class="icon">&#128197;</span>
+                    Сроки
+                </div>
+                <div class="section-body">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Срок передачи транспортного средства</label>
+                            <input type="date" name="transfer_deadline">
+                        </div>
+                        <div class="form-group">
+                            <label>Срок приёмки транспортного средства</label>
+                            <input type="date" name="acceptance_deadline">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <form action="{% url 'gai:generate_document' %}" method="POST">{% csrf_token %}
-        <div class="shadow p-3 my-3 bg-body-tertiary rounded">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="mt-3">
-                        <div class="mb-3">
-                            <label for="agreement_place" class="form-label">Место заключения договора</label>
-                            <input type="text" class="form-control" name="agreement_place" id="agreement_place"
-                                   aria-describedby="agreement_place" value="Минск">
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-danger" onclick="document.getElementById('contractForm').reset();">
+                &#128465; Очистить
+            </button>
+            <button type="submit" class="btn btn-primary">
+                &#128196; Сформировать документ
+            </button>
         </div>
-
-        <div class="shadow p-3 my-3 bg-body-tertiary rounded">
-            <h3 class="my-3">Данные продавца</h3>
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="mt-3">
-                        <div class="mb-3">
-                            <label for="salesman_lastname" class="form-label">Фамилия</label>
-                            <input type="text" class="form-control" name="salesman_lastname" id="salesman_lastname"
-                                   aria-describedby="salesman_lastname" value="Иванов">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="mt-3">
-                        <div class="mb-3">
-                            <label for="salesman_firstname" class="form-label">Имя</label>
-                            <input type="text" class="form-control" name="salesman_firstname" id="salesman_firstname"
-                                   aria-describedby="salesman_firstname" value="Иван">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="mt-3">
-                        <div class="mb-3">
-                            <label for="salesman_patronymic" class="form-label">Отчество</label>
-                            <input type="text" class="form-control" name="salesman_patronymic" id="salesman_patronymic"
-                                   aria-describedby="salesman_patronymic" value="Иванович">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="mt-3">
-                        <div class="mb-3">
-                            <label for="salesman_id_number" class="form-label">Идентификационный номер</label>
-                            <input type="text" class="form-control" name="salesman_id_number" id="salesman_id_number"
-                                   aria-describedby="salesman_id_number" value="1234567899">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="mt-3">
-                        <div class="mb-3">
-                            <label for="salesman_passport_number" class="form-label">Серия и номер паспорта</label>
-                            <input type="text" class="form-control" name="salesman_passport_number" id="salesman_passport_number"
-                                   aria-describedby="salesman_passport_number" value="МР 99994444332">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="mt-3">
-                        <div class="mb-3">
-                            <label for="salesman_passport_issue_date" class="form-label">Дата выдачи паспорта</label>
-                            <input type="date" class="form-control" name="salesman_passport_issue_date" id="salesman_passport_issue_date"
-                                   aria-describedby="salesman_passport_issue_date">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="mt-3">
-                        <div class="mb-3">
-                            <label for="salesman_passport_issue_place" class="form-label">Орган выдачи паспорта в родительном
-                                падеже</label>
-                            <input type="text" class="form-control" name="salesman_passport_issue_place"
-                                   id="salesman_passport_issue_place"
-                                   aria-describedby="salesman_passport_issue_place" value="Ленинским РУВД г. Минска">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="mt-3">
-                        <div class="mb-3">
-                            <label for="salesman_residence_place" class="form-label">Место жительства</label>
-                            <input type="text" class="form-control" name="salesman_residence_place"
-                                   id="salesman_residence_place"
-                                   aria-describedby="salesman_residence_place" value="Место жительства">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="shadow p-3 my-3 bg-body-tertiary rounded">
-            <h3 class="my-3">Данные покупателя</h3>
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="mt-3">
-                        <div class="mb-3">
-                            <label for="buyer_lastname" class="form-label">Фамилия</label>
-                            <input type="text" class="form-control" name="buyer_lastname" id="buyer_lastname"
-                                   aria-describedby="buyer_lastname" value="Петров">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="mt-3">
-                        <div class="mb-3">
-                            <label for="buyer_firstname" class="form-label">Имя</label>
-                            <input type="text" class="form-control" name="buyer_firstname" id="buyer_firstname"
-                                   aria-describedby="buyer_firstname" value="Петр">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="mt-3">
-                        <div class="mb-3">
-                            <label for="buyer_patronymic" class="form-label">Отчество</label>
-                            <input type="text" class="form-control" name="buyer_patronymic" id="buyer_patronymic"
-                                   aria-describedby="buyer_patronymic" value="Петрович">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="mt-3">
-                        <div class="mb-3">
-                            <label for="buyer_id_number" class="form-label">Идентификационный номер</label>
-                            <input type="text" class="form-control" name="buyer_id_number" id="buyer_id_number"
-                                   aria-describedby="buyer_id_number" value="1234567899">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="mt-3">
-                        <div class="mb-3">
-                            <label for="buyer_passport_number" class="form-label">Серия и номер паспорта</label>
-                            <input type="text" class="form-control" name="buyer_passport_number" id="buyer_passport_number"
-                                   aria-describedby="buyer_passport_number" value="МР 99994444332">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="mt-3">
-                        <div class="mb-3">
-                            <label for="buyer_passport_issue_date" class="form-label">Дата выдачи паспорта</label>
-                            <input type="date" class="form-control" name="buyer_passport_issue_date" id="buyer_passport_issue_date"
-                                   aria-describedby="buyer_passport_issue_date">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="mt-3">
-                        <div class="mb-3">
-                            <label for="buyer_passport_issue_place" class="form-label">Орган выдачи паспорта в родительном
-                                падеже</label>
-                            <input type="text" class="form-control" name="buyer_passport_issue_place"
-                                   id="buyer_passport_issue_place"
-                                   aria-describedby="buyer_passport_issue_place" value="Ленинским РУВД г. Минска">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="mt-3">
-                        <div class="mb-3">
-                            <label for="buyer_residence_place" class="form-label">Место жительства</label>
-                            <input type="text" class="form-control" name="buyer_residence_place"
-                                   id="buyer_residence_place"
-                                   aria-describedby="buyer_residence_place" value="Место жительства">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <button type="submit" class="btn btn-primary" style="width: 100%">Сформировать документ</button>
     </form>
-
-
-
-
 {% endblock %}

@@ -12,6 +12,85 @@ from docxtpl import DocxTemplate
 DOC_PATH = os.path.join(settings.BASE_DIR, 'doc_templates')
 
 
+def make_short_name(lastname, firstname, patronymic):
+    parts = [lastname]
+    if firstname:
+        parts.append(f'{firstname[0]}.')
+    if patronymic:
+        parts.append(f'{patronymic[0]}.')
+    return ' '.join(parts)
+
+
+def fmt_date(value):
+    if not value:
+        return ''
+    try:
+        parts = value.split('-')
+        return f'{parts[2]}.{parts[1]}.{parts[0]}'
+    except (IndexError, AttributeError):
+        return value
+
+
+def number_to_words(num):
+    ones = [
+        '', 'один', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь',
+        'восемь', 'девять', 'десять', 'одиннадцать', 'двенадцать',
+        'тринадцать', 'четырнадцать', 'пятнадцать', 'шестнадцать',
+        'семнадцать', 'восемнадцать', 'девятнадцать',
+    ]
+    tens = [
+        '', '', 'двадцать', 'тридцать', 'сорок', 'пятьдесят',
+        'шестьдесят', 'семьдесят', 'восемьдесят', 'девяносто',
+    ]
+    hundreds = [
+        '', 'сто', 'двести', 'триста', 'четыреста', 'пятьсот',
+        'шестьсот', 'семьсот', 'восемьсот', 'девятьсот',
+    ]
+
+    def conv(n, forms, gv=None):
+        if n == 0 and not forms:
+            return ''
+        s = ''
+        if n >= 100:
+            s += hundreds[n // 100] + ' '
+            n %= 100
+        if n >= 20:
+            s += tens[n // 10] + ' '
+            n %= 10
+        if 1 <= n < 20:
+            s += ones[n] + ' '
+        elif n > 0:
+            s += ones[n] + ' '
+        if forms:
+            v = gv if gv is not None else n
+            lt = v % 100
+            lo = v % 10
+            if 11 <= lt <= 19:
+                s += forms[2] + ' '
+            elif lo == 1:
+                s += forms[0] + ' '
+            elif 2 <= lo <= 4:
+                s += forms[1] + ' '
+            else:
+                s += forms[2] + ' '
+        return s
+
+    if num == 0:
+        return 'ноль рублей 00 копеек'
+
+    result = ''
+    rub = int(num)
+    kop = round((num - rub) * 100)
+    if rub >= 1000000:
+        result += conv(rub // 1000000, ['миллион', 'миллиона', 'миллионов'])
+    if rub >= 1000:
+        result += conv((rub % 1000000) // 1000, ['тысяча', 'тысячи', 'тысяч'])
+    result += conv(rub % 1000, ['рубль', 'рубля', 'рублей'], rub)
+    result = result.strip()
+    result += f' {kop:02d} копеек' if kop > 0 else ' 00 копеек'
+    return result[0].upper() + result[1:]
+
+
 def docx_generation(doc_path, context):
     doc = DocxTemplate(doc_path)
     doc.render(context)
@@ -44,6 +123,20 @@ def generate_document(request):
     buyer_passport_issue_place = request.POST.get('buyer_passport_issue_place')
     buyer_residence_place = request.POST.get('buyer_residence_place')
 
+    type_car = request.POST.get('type_car')
+    model_car = request.POST.get('model_car')
+    year_car = request.POST.get('year_car')
+    vin_car = request.POST.get('vin_car')
+    reg_cert_number = request.POST.get('reg_cert_number')
+    reg_cert_issue_date = request.POST.get('reg_cert_issue_date')
+    reg_cert_issue_place = request.POST.get('reg_cert_issue_place')
+    transfer_deadline = request.POST.get('transfer_deadline')
+    acceptance_deadline = request.POST.get('acceptance_deadline')
+    price = request.POST.get('price')
+
+    salesman_full_name_short = make_short_name(salesman_lastname, salesman_firstname, salesman_patronymic)
+    buyer_full_name_short = make_short_name(buyer_lastname, buyer_firstname, buyer_patronymic)
+
     context = {
         'agreement_place': agreement_place,
         'salesman_lastname': salesman_lastname,
@@ -51,17 +144,31 @@ def generate_document(request):
         'salesman_patronymic': salesman_patronymic,
         'salesman_id_number': salesman_id_number,
         'salesman_passport_number': salesman_passport_number,
-        'salesman_passport_issue_date': salesman_passport_issue_date,
+        'salesman_passport_issue_date': fmt_date(salesman_passport_issue_date),
         'salesman_passport_issue_place': salesman_passport_issue_place,
         'salesman_residence_place': salesman_residence_place,
         'buyer_lastname': buyer_lastname,
+        'buyer_lastnamer': buyer_lastname,
         'buyer_firstname': buyer_firstname,
         'buyer_patronymic': buyer_patronymic,
         'buyer_id_number': buyer_id_number,
         'buyer_passport_number': buyer_passport_number,
-        'buyer_passport_issue_date': buyer_passport_issue_date,
+        'buyer_passport_issue_date': fmt_date(buyer_passport_issue_date),
         'buyer_passport_issue_place': buyer_passport_issue_place,
         'buyer_residence_place': buyer_residence_place,
+        'type_car': type_car,
+        'model_car': model_car,
+        'year_car': year_car,
+        'vin_car': vin_car,
+        'reg_cert_number': reg_cert_number,
+        'reg_cert_issue_date': fmt_date(reg_cert_issue_date),
+        'reg_cert_issue_place': reg_cert_issue_place,
+        'transfer_deadline': fmt_date(transfer_deadline),
+        'acceptance_deadline': fmt_date(acceptance_deadline),
+        'price': price,
+        'price_words': number_to_words(float(price)) if price else '',
+        'salesman_full_name_short': salesman_full_name_short,
+        'buyer_full_name_short': buyer_full_name_short,
     }
 
     buffer = docx_generation(os.path.join(DOC_PATH, 'dogovor-kupli-prodazhy.docx'), context)
