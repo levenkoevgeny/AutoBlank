@@ -103,6 +103,9 @@ def docx_generation(doc_path, context):
     return buffer
 
 
+def yandex_servise(request):
+    return render(request, 'yandex_519162dd5d6ded9a.html')
+
 def index(request):
     return render(request, 'documents_generator/index.html')
 

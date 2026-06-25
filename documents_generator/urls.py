@@ -8,6 +8,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('generate', views.generate_document, name='generate_document'),
     path('sitemap.xml', views.sitemap_xml, name='sitemap_xml'),
+    path('yandex_519162dd5d6ded9a.html', views.yandex_servise, name='yandex_servise'),
     path('robots.txt', TemplateView.as_view(
         template_name='robots.txt',
         content_type='text/plain'
