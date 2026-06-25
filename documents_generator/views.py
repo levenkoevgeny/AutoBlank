@@ -210,14 +210,16 @@ def generate_document(request):
 
 def sitemap_xml(request):
     today = datetime.now().strftime('%Y-%m-%d')
-    xml = f"""<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>https://autoblank.by/</loc>
-        <lastmod>{today}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>1.0</priority>
-    </url>
-</urlset>"""
+    xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+        '<url>'
+        '<loc>https://autoblank.by/</loc>'
+        '<lastmod>' + today + '</lastmod>'
+        '<changefreq>monthly</changefreq>'
+        '<priority>1.0</priority>'
+        '</url>'
+        '</urlset>'
+    )
     return HttpResponse(xml, content_type='application/xml')
 
