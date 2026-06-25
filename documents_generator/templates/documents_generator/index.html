@@ -1,8 +1,56 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block title %}Главная{% endblock %}
+{% block title %}Генератор ДКП — Автоматическое формирование договора купли-продажи автомобиля | AutoBlank{% endblock %}
+{% block description %}Бесплатный онлайн-генератор договора купли-продажи автомобиля (ДКП). Заполните форму и скачайте готовый документ за несколько минут.{% endblock %}
+{% block keywords %}генератор ДКП, договор купли продажи авто онлайн, скачать бланк ДКП, договор купли-продажи автомобиля бланк, оформление договора купли продачи{% endblock %}
+{% block canonical %}https://autoblank.by/{% endblock %}
+{% block og_title %}Генератор ДКП — Автоматическое формирование договора купли-продажи автомобиля{% endblock %}
+{% block og_description %}Бесплатный онлайн-генератор договора купли-продажи автомобиля. Заполните форму и скачайте готовый документ.{% endblock %}
+{% block og_url %}https://autoblank.by/{% endblock %}
 
 {% block content %}
+
+<!-- Schema.org JSON-LD -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "AutoBlank — Генератор ДКП",
+    "url": "https://autoblank.by/",
+    "description": "Бесплатный онлайн-генератор договора купли-продажи автомобиля (ДКП). Заполните форму и скачайте готовый документ.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Веб-браузер",
+    "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "BYN"
+    },
+    "featureList": [
+        "Генерация договора купли-продажи автомобиля",
+        "Автоматическое заполнение данных",
+        "Скачивание готового документа в формате DOCX",
+        "Бесплатное использование"
+    ],
+    "inLanguage": "ru",
+    "browserRequirements": "Требуется современный веб-браузер с поддержкой JavaScript"
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Главная",
+            "item": "https://autoblank.by/"
+        }
+    ]
+}
+</script>
+<!-- /Schema.org JSON-LD -->
     <header>
         <div class="logo">&#128196;</div>
         <h1>Генератор документов</h1>

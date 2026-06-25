@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /generate
+
+Sitemap: https://autoblank.by/sitemap.xml

@@ -1,10 +1,12 @@
 import io
 import os
+from datetime import datetime
 
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.conf import settings
 from django.core.mail import EmailMessage
+from django.utils.html import escape
 
 from docxtpl import DocxTemplate
 
@@ -201,4 +203,18 @@ def generate_document(request):
     )
     response["Content-Disposition"] = f'attachment; filename="{file_name}"'
     return response
+
+
+def sitemap_xml(request):
+    today = datetime.now().strftime('%Y-%m-%d')
+    xml = f"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://autoblank.by/</loc>
+        <lastmod>{today}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>
+</urlset>"""
+    return HttpResponse(xml, content_type='application/xml')
 
