@@ -76,19 +76,21 @@ def number_to_words(num):
         return s
 
     if num == 0:
-        return 'ноль рублей 00 копеек'
+        return 'ноль'
+
+    rub = int(num)
+
+    formatted = f'{rub:,}'.replace(',', ' ')
 
     result = ''
-    rub = int(num)
-    kop = round((num - rub) * 100)
     if rub >= 1000000:
         result += conv(rub // 1000000, ['миллион', 'миллиона', 'миллионов'])
     if rub >= 1000:
         result += conv((rub % 1000000) // 1000, ['тысяча', 'тысячи', 'тысяч'])
-    result += conv(rub % 1000, ['рубль', 'рубля', 'рублей'], rub)
+    result += conv(rub % 1000, ['', '', ''])
     result = result.strip()
-    result += f' {kop:02d} копеек' if kop > 0 else ' 00 копеек'
-    return result[0].upper() + result[1:]
+
+    return f'{result}'
 
 
 def docx_generation(doc_path, context):
@@ -133,6 +135,8 @@ def generate_document(request):
     transfer_deadline = request.POST.get('transfer_deadline')
     acceptance_deadline = request.POST.get('acceptance_deadline')
     price = request.POST.get('price')
+    payment_method = request.POST.get('payment_method')
+    payment_date = request.POST.get('payment_date')
 
     salesman_full_name_short = make_short_name(salesman_lastname, salesman_firstname, salesman_patronymic)
     buyer_full_name_short = make_short_name(buyer_lastname, buyer_firstname, buyer_patronymic)
@@ -167,6 +171,8 @@ def generate_document(request):
         'acceptance_deadline': fmt_date(acceptance_deadline),
         'price': price,
         'price_words': number_to_words(float(price)) if price else '',
+        'payment_method': payment_method,
+        'payment_date': fmt_date(payment_date),
         'salesman_full_name_short': salesman_full_name_short,
         'buyer_full_name_short': buyer_full_name_short,
     }
