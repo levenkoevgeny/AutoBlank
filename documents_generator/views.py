@@ -261,14 +261,14 @@ def feedback(request):
                 subject=f'[AutoBlank] Предложение: {subject}' if subject else '[AutoBlank] Предложение',
                 body=body,
                 from_email=settings.DEFAULT_FROM_EMAIL,
-                to=['dolganovvvlad486@gmail.com'],
+                to=[os.getenv('FEEDBACK_EMAIL', 'dolganovvvlad486@gmail.com')],
                 reply_to=[email],
             )
             email_msg.send()
             messages.success(request, 'Ваше сообщение отправлено! Спасибо за обратную связь.')
             return redirect('gai:feedback')
-        except Exception:
-            messages.error(request, 'Ошибка при отправке. Попробуйте позже.')
+        except Exception as e:
+            messages.error(request, f'Ошибка: {str(e)}')
             return render(request, 'documents_generator/feedback.html', {
                 'form_data': {'name': name, 'email': email, 'subject': subject, 'message': message}
             })
