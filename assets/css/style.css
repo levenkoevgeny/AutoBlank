@@ -514,6 +514,26 @@ header p {
     flex-shrink: 0;
 }
 
+/* SEO Text */
+.seo-text {
+    margin-bottom: 24px;
+}
+
+.seo-text p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+.seo-text p:last-child {
+    margin-bottom: 0;
+}
+
+.seo-text strong {
+    color: var(--text-primary);
+}
+
 /* Error State */
 .form-group input.error,
 .form-group select.error {
