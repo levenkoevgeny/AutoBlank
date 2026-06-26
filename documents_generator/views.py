@@ -115,6 +115,13 @@ def favicon_view(request):
     return FileResponse(open(favicon_path, 'rb'), content_type='image/x-icon')
 
 
+def download_template(request):
+    doc_path = os.path.join(DOC_PATH, 'Шаблон договора.docx')
+    response = FileResponse(open(doc_path, 'rb'), content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+    response['Content-Disposition'] = 'attachment; filename="Шаблон договора.docx"'
+    return response
+
+
 
 def generate_document(request):
     agreement_place = request.POST.get('agreement_place')

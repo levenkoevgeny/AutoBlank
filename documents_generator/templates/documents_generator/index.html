@@ -63,6 +63,15 @@
         </div>
     </noscript>
 
+    <a href="{% url 'gai:download_template' %}" class="template-card">
+        <div class="template-card-icon">&#128221;</div>
+        <div class="template-card-info">
+            <strong>Скачать шаблон ДКП</strong>
+            <span>DOCX &bull; Пустой бланк договора купли-продажи автомобиля</span>
+        </div>
+        <div class="template-card-arrow">&#8595;</div>
+    </a>
+
     <form action="{% url 'gai:generate_document' %}" method="POST" id="contractForm">
         {% csrf_token %}
 
@@ -297,6 +306,7 @@
                 <strong>Навигация</strong>
                 <ul>
                     <li><a href="{% url 'gai:index' %}">Главная</a></li>
+                    <li><a href="{% url 'gai:download_template' %}">Скачать шаблон ДКП</a></li>
                     <li><a href="{% url 'gai:feedback' %}">Предложения и отзывы</a></li>
                 </ul>
             </div>
