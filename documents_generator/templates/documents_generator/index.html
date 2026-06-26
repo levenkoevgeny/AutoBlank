@@ -288,6 +288,27 @@
     </form>
 
     <footer>
-        <p>AutoBlank — бесплатный онлайн-сервис для генерации договоров купли-продажи автомобилей. Быстрое заполнение и скачивание документов.</p>
+        <div class="footer-content">
+            <div class="footer-col">
+                <strong>AutoBlank</strong>
+                <p>Бесплатный онлайн-генератор документов для купли-продажи автомобилей.</p>
+            </div>
+            <div class="footer-col">
+                <strong>Навигация</strong>
+                <ul>
+                    <li><a href="{% url 'gai:index' %}">Главная</a></li>
+                    <li><a href="{% url 'gai:feedback' %}">Предложения и отзывы</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <strong>Контакты</strong>
+                <ul>
+                    <li><a href="mailto:dolganovvvlad486@gmail.com">dolganovvvlad486@gmail.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AutoBlank. Все права защищены.</p>
+        </div>
     </footer>
 {% endblock %}

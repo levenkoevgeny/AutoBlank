@@ -2,10 +2,11 @@ import io
 import os
 from datetime import datetime
 
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django.http import HttpResponse, FileResponse
 from django.conf import settings
 from django.core.mail import EmailMessage
+from django.contrib import messages
 from django.utils.html import escape
 
 from docxtpl import DocxTemplate
@@ -108,6 +109,11 @@ def yandex_servise(request):
 
 def index(request):
     return render(request, 'documents_generator/index.html')
+
+def favicon_view(request):
+    favicon_path = os.path.join(settings.BASE_DIR, 'assets', 'img', 'favicon.ico')
+    return FileResponse(open(favicon_path, 'rb'), content_type='image/x-icon')
+
 
 
 def generate_document(request):
@@ -219,7 +225,53 @@ def sitemap_xml(request):
         '<changefreq>monthly</changefreq>'
         '<priority>1.0</priority>'
         '</url>'
+        '<url>'
+        '<loc>https://autoblank.by/feedback</loc>'
+        '<lastmod>' + today + '</lastmod>'
+        '<changefreq>monthly</changefreq>'
+        '<priority>0.7</priority>'
+        '</url>'
         '</urlset>'
     )
     return HttpResponse(xml, content_type='application/xml')
+
+
+def feedback(request):
+    if request.method == 'POST':
+        name = request.POST.get('name', '').strip()
+        email = request.POST.get('email', '').strip()
+        subject = request.POST.get('subject', '').strip()
+        message = request.POST.get('message', '').strip()
+
+        if not name or not email or not message:
+            messages.error(request, 'Заполните обязательные поля.')
+            return render(request, 'documents_generator/feedback.html', {
+                'form_data': {'name': name, 'email': email, 'subject': subject, 'message': message}
+            })
+
+        body = (
+            f'Имя: {name}\n'
+            f'Email: {email}\n'
+            f'Тема: {subject}\n\n'
+            f'Сообщение:\n{message}'
+        )
+
+        try:
+            email_msg = EmailMessage(
+                subject=f'[AutoBlank] Предложение: {subject}' if subject else '[AutoBlank] Предложение',
+                body=body,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                to=['dolganovvvlad486@gmail.com'],
+                reply_to=[email],
+            )
+            email_msg.send()
+            messages.success(request, 'Ваше сообщение отправлено! Спасибо за обратную связь.')
+            return redirect('gai:feedback')
+        except Exception:
+            messages.error(request, 'Ошибка при отправке. Попробуйте позже.')
+            return render(request, 'documents_generator/feedback.html', {
+                'form_data': {'name': name, 'email': email, 'subject': subject, 'message': message}
+            })
+
+    return render(request, 'documents_generator/feedback.html')
 
