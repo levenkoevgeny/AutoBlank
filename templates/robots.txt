@@ -3,4 +3,17 @@ Allow: /
 Disallow: /admin/
 Disallow: /generate
 
+# AI Search Bots
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://autoblank.by/sitemap.xml

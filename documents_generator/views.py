@@ -115,6 +115,10 @@ def favicon_view(request):
     return FileResponse(open(favicon_path, 'rb'), content_type='image/x-icon')
 
 
+def download_page(request):
+    return render(request, 'documents_generator/download.html')
+
+
 def download_template(request):
     doc_path = os.path.join(DOC_PATH, 'Шаблон договора.docx')
     response = FileResponse(open(doc_path, 'rb'), content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
@@ -231,6 +235,12 @@ def sitemap_xml(request):
         '<lastmod>' + today + '</lastmod>'
         '<changefreq>monthly</changefreq>'
         '<priority>1.0</priority>'
+        '</url>'
+        '<url>'
+        '<loc>https://autoblank.by/download</loc>'
+        '<lastmod>' + today + '</lastmod>'
+        '<changefreq>monthly</changefreq>'
+        '<priority>0.9</priority>'
         '</url>'
         '<url>'
         '<loc>https://autoblank.by/feedback</loc>'

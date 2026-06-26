@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}Скачать бланк ДКП 2026 бесплатно | Шаблон договора купли-продажи автомобиля | AutoBlank{% endblock %}
+{% block description %}Скачайте бесплатный бланк договора купли-продажи автомобиля 2026 в формате DOCX. Готовый шаблон для заполнения от руки или в Word.{% endblock %}
+{% block keywords %}скачать бланк ДКП, шаблон договора купли-продажи автомобиля, скачать ДКП бесплатно, бланк ДКП 2026, образец договора{% endblock %}
+
+{% block content %}
+    <header>
+        <div class="logo">&#128221;</div>
+        <h1>Скачать бланк ДКП 2026</h1>
+        <p>Бесплатный шаблон договора купли-продажи автомобиля в формате DOCX</p>
+    </header>
+
+    <div class="section">
+        <div class="section-header">
+            <span class="icon">&#128196;</span>
+            Шаблон документа
+        </div>
+        <div class="section-body">
+            <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                Готовый бланк договора купли-продажи автомобиля. Можно заполнить от руки или в программе Microsoft Word.
+            </p>
+
+            <div class="download-info">
+                <div class="download-info-item">
+                    <strong>Формат:</strong> DOCX (Microsoft Word)
+                </div>
+                <div class="download-info-item">
+                    <strong>Размер:</strong> ~15 KB
+                </div>
+                <div class="download-info-item">
+                    <strong>Цена:</strong> Бесплатно
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <a href="{% url 'gai:download_template' %}" class="btn btn-primary">
+                    &#128229; Скачать бланк ДКП
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <span class="icon">&#128161;</span>
+            Как использовать бланк
+        </div>
+        <div class="section-body">
+            <div class="steps-list">
+                <div class="step-item">
+                    <span class="step-num">1</span>
+                    <span>Скачайте файл на компьютер</span>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">2</span>
+                    <span>Откройте в Microsoft Word или LibreOffice</span>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">3</span>
+                    <span>Заполните все поля вручную</span>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">4</span>
+                    <span>Распечатайте в двух экземплярах</span>
+                </div>
+            </div>
+
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 16px;">
+                Или воспользуйтесь <a href="{% url 'gai:index' %}">нашим генератором</a> — заполните форму онлайн и получите готовый документ автоматически.
+            </p>
+        </div>
+    </div>
+{% endblock %}
