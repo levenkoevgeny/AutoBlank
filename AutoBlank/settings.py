@@ -72,18 +72,6 @@ DATABASES = {
     }
 }
 
-DATABASES_ = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "OPTIONS": {
-            "host": os.getenv('DB_HOST'),
-            "port": int(os.getenv('DB_PORT')),
-            "database": os.getenv('DATABASE'),
-            "user": os.getenv('DB_USER'),
-            "password": os.getenv('DB_PASSWORD'),
-        },
-    }
-}
 
 
 # Password validation
@@ -142,3 +130,5 @@ EMAIL_USE_SSL = True
 EMAIL_HOST_USER = 'dolganovvladislaus@yandex.by'
 EMAIL_HOST_PASSWORD = 'ngxbqgvhuxxuaubt'
 DEFAULT_FROM_EMAIL = 'dolganovvladislaus@yandex.by'
+
+
