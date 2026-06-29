@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}Скачать форму заявления на снятие с учета автомобиля бесплатно | AutoBlank{% endblock %}
+{% block description %}Скачайте бесплатный бланк заявления на снятие автомобиля с учета в ГАИ Беларуси в формате DOCX. Готовая форма для заполнения от руки или в Word.{% endblock %}
+{% block keywords %}заявление на снятие с учета автомобиля, форма снятия с учета ГАИ, бланк заявления ГАИ, снять авто с учета Беларусь, скачать форму снятия с учета{% endblock %}
+
+{% block content %}
+    <header>
+        <div class="logo">&#128663;</div>
+        <h1>Скачать форму снятия с учета</h1>
+        <p>Бесплатный бланк заявления на снятие автомобиля с государственного учета в ГАИ</p>
+    </header>
+
+    <div class="section">
+        <div class="section-header">
+            <span class="icon">&#128196;</span>
+            Шаблон документа
+        </div>
+        <div class="section-body">
+            <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                Готовый бланк заявления на снятие автомобиля с учета в ГАИ. Можно заполнить от руки или в программе Microsoft Word.
+            </p>
+
+            <div class="download-info">
+                <div class="download-info-item">
+                    <strong>Формат:</strong> DOCX (Microsoft Word)
+                </div>
+                <div class="download-info-item">
+                    <strong>Размер:</strong> ~15 KB
+                </div>
+                <div class="download-info-item">
+                    <strong>Цена:</strong> Бесплатно
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <a href="{% url 'gai:download_deregistration_template' %}" class="btn btn-primary">
+                    &#128229; Скачать форму (.docx)
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <span class="icon">&#128161;</span>
+            Как использовать бланк
+        </div>
+        <div class="section-body">
+            <div class="steps-list">
+                <div class="step-item">
+                    <span class="step-num">1</span>
+                    <span>Скачайте файл на компьютер</span>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">2</span>
+                    <span>Откройте в Microsoft Word или LibreOffice</span>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">3</span>
+                    <span>Заполните все поля вручную</span>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">4</span>
+                    <span>Распечатайте и подпишите</span>
+                </div>
+            </div>
+
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 16px;">
+                Или воспользуйтесь <a href="{% url 'gai:deregistration' %}">нашей онлайн-формой</a> — заполните заявление онлайн и распечатайте готовый документ.
+            </p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <span class="icon">&#128214;</span>
+            Когда нужно снимать автомобиль с учета
+        </div>
+        <div class="section-body">
+            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 12px;">
+                <strong>Снятие автомобиля с государственного учета</strong> — обязательная процедура при продаже, утилизации, выезде за пределы Беларуси или угоне транспортного средства. Без снятия с учета новый владелец не сможет переоформить автомобиль на себя.
+            </p>
+            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 12px;">
+                Заявление подается в <strong>МРО ГАИ</strong> по месту регистрации владельца. К заявлению прилагаются: паспорт транспортного средства, квитанция об оплате госпошлины и номерные знаки.
+            </p>
+            <p style="color: var(--text-secondary); line-height: 1.7;">
+                Скачайте <strong>форму заявления на снятие с учета</strong> и заполните ее от руки или в программе Microsoft Word перед посещением МРО ГАИ.
+            </p>
+        </div>
+    </div>
+{% endblock %}

@@ -175,6 +175,15 @@
         <div class="template-card-arrow">&#8595;</div>
     </a>
 
+    <a href="{% url 'gai:deregistration' %}" class="template-card">
+        <div class="template-card-icon">&#128663;</div>
+        <div class="template-card-info">
+            <strong>Заявление на снятие с учета</strong>
+            <span>Форма для снятия автомобиля с государственного учета в ГАИ</span>
+        </div>
+        <div class="template-card-arrow">&#8595;</div>
+    </a>
+
     <div class="seo-text">
         <p><strong>Генератор договора купли-продажи автомобиля</strong> — бесплатный онлайн-сервис для оформления ДКП. Заполните форму и скачайте готовый <strong>бланк договора купли-продажи авто</strong> в формате DOCX. Наш <strong>генератор ДКП</strong> создаёт юридически грамотный <strong>шаблон договора купли-продажи автомобиля 2026</strong>, который соответствует требованиям ГАИ.</p>
         <p>Используйте наш <strong>образец договора купли-продажи</strong> для оформления сделки между физическими лицами. <strong>Заполнить ДКП</strong> онлайн можно за 5 минут — укажите данные продавца, покупателя и автомобиля, после чего <strong>скачайте договор купли-продажи</strong> и распечатайте в трех экземплярах.</p>
@@ -394,6 +403,11 @@
             </div>
         </div>
 
+        <div class="consent-group">
+            <input type="checkbox" id="consent" name="consent" required>
+            <label for="consent">Я согласен(на) на обработку персональных данных в соответствии с <a href="{% url 'gai:privacy_policy' %}" target="_blank">Политикой обработки персональных данных</a>. Подробнее о <a href="{% url 'gai:privacy_policy' %}#rights" target="_blank">ваших правах</a>.</label>
+        </div>
+
         <div class="btn-group">
             <button type="button" class="btn btn-danger" onclick="document.getElementById('contractForm').reset();">
                 &#128465; Очистить
@@ -403,6 +417,14 @@
             </button>
         </div>
     </form>
+
+    <div class="data-notice">
+        <span class="data-notice-icon">&#128274;</span>
+        <div>
+            <strong>Ваши данные не сохраняются</strong>
+            <span>Персональные данные используются исключительно для генерации документа и не хранятся на нашем сервере.</span>
+        </div>
+    </div>
 
     <section class="faq-section">
         <h2>Часто задаваемые вопросы</h2>
@@ -469,6 +491,8 @@
                 <ul>
                     <li><a href="{% url 'gai:index' %}">Главная</a></li>
                     <li><a href="{% url 'gai:download_page' %}">Скачать шаблон ДКП</a></li>
+                    <li><a href="{% url 'gai:registration' %}">Регистрация авто</a></li>
+                    <li><a href="{% url 'gai:deregistration' %}">Снятие с учета</a></li>
                     <li><a href="{% url 'gai:feedback' %}">Предложения и отзывы</a></li>
                 </ul>
             </div>
@@ -480,7 +504,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 AutoBlank. Все права защищены.</p>
+            <p>&copy; 2026 AutoBlank. Все права защищены. <a href="{% url 'gai:privacy_policy' %}">Политика обработки персональных данных</a></p>
         </div>
     </footer>
 {% endblock %}

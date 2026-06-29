@@ -149,6 +149,7 @@ header p {
     transition: all 0.3s ease;
     animation: fadeInUp 0.5s ease forwards;
     opacity: 0;
+    margin-bottom: 20px;
 }
 
 @keyframes fadeInUp {
@@ -316,6 +317,18 @@ header p {
 
 .btn-danger:hover {
     background: rgba(239, 68, 68, 0.25);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--accent);
+    border: 1.5px solid var(--accent);
+}
+
+.btn-outline:hover {
+    background: var(--accent);
+    color: white;
     transform: translateY(-2px);
 }
 
@@ -532,6 +545,197 @@ header p {
 
 .seo-text strong {
     color: var(--text-primary);
+}
+
+/* Policy Text */
+.policy-text h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 24px 0 12px;
+}
+
+.policy-text h2:first-child {
+    margin-top: 0;
+}
+
+.policy-text p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+.policy-text ul {
+    color: var(--text-secondary);
+    padding-left: 20px;
+    margin-bottom: 12px;
+}
+
+.policy-text ul li {
+    margin-bottom: 6px;
+    line-height: 1.6;
+}
+
+.policy-text strong {
+    color: var(--text-primary);
+}
+
+/* Consent Checkbox */
+.consent-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 20px;
+    background: var(--bg-input);
+    border: 1.5px solid var(--border-color);
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.consent-group input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    accent-color: var(--accent-primary);
+    flex-shrink: 0;
+}
+
+.consent-group label {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.consent-group label a {
+    color: var(--accent-primary);
+    text-decoration: none;
+}
+
+.consent-group label a:hover {
+    text-decoration: underline;
+}
+
+/* Data Notice */
+.data-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 20px;
+    background: rgba(0, 217, 163, 0.08);
+    border: 1px solid rgba(0, 217, 163, 0.2);
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.data-notice-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.data-notice strong {
+    display: block;
+    color: var(--success);
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+
+.data-notice span {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+/* Useful Links */
+.links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.useful-link {
+    display: block;
+    padding: 14px 18px;
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.useful-link:hover {
+    border-color: var(--accent-primary);
+    background: rgba(108, 92, 231, 0.05);
+}
+
+.useful-link-title {
+    display: block;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+
+.useful-link-desc {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+/* Price Table */
+.price-table {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: var(--bg-input);
+    border-radius: 10px;
+    font-size: 0.9rem;
+}
+
+.price-row span {
+    color: var(--text-secondary);
+}
+
+.price-row strong {
+    color: var(--success);
+}
+
+/* Info List */
+.info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.info-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.info-list li:last-child {
+    border-bottom: none;
+}
+
+.info-list li strong {
+    color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+    .price-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
 }
 
 /* Error State */

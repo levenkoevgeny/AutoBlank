@@ -1,0 +1,196 @@
+{% extends 'base.html' %}
+
+{% block title %}Как зарегистрировать подержанный автомобиль в ГАИ Беларуси 2026 | AutoBlank{% endblock %}
+{% block description %}Пошаговая инструкция постановки на учет подержанного авто в МРЭО ГАИ Беларуси. Документы, госпошлины, порядок действий для физических лиц.{% endblock %}
+{% block keywords %}регистрация автомобиля беларусь, постановка на учет авто ГАИ, документы для регистрации авто, МРЭО беларусь, госпошлина регистрация авто, как снять авто с учета, переоформить авто без смены номеров{% endblock %}
+
+{% block content %}
+    <header>
+        <div class="logo">&#128663;</div>
+        <h1>Как зарегистрировать подержанный автомобиль в ГАИ</h1>
+        <p>Пошаговая инструкция для физических лиц (Беларусь, 2026)</p>
+    </header>
+
+    <div class="section">
+        <div class="section-header">
+            <span class="icon">&#128203;</span>
+            Зависит от того, снят ли авто с учета
+        </div>
+        <div class="section-body">
+            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+                Весь процесс регистрации зависит от того, снят ли автомобиль с учета продавцом.
+            </p>
+
+            <details class="faq-item">
+                <summary>Вариант 1: Авто уже снято с учета (есть транзитные номера)</summary>
+                <ul class="info-list">
+                    <li>Заключите ДКП в МРО ГАИ по месту последней регистрации авто или по месту вашей будущей постановки на учет. ДКП выдается в трех экземплярах.</li>
+                    <li>В течение <strong>30 дней</strong> поставьте машину на учет в ГАИ по месту вашей регистрации.</li>
+                </ul>
+            </details>
+
+            <details class="faq-item">
+                <summary>Вариант 2: Авто еще на учете у продавца</summary>
+                <ul class="info-list">
+                    <li>Продавец может снять авто с учета в любом МРО ГАИ (или вы можете сделать это одновременно, если он приедет в ваш отдел).</li>
+                    <li>Далее заключаете ДКП и едете в свой отдел ГАИ для постановки на учет.</li>
+                </ul>
+            </details>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <span class="icon">&#128203;</span>
+            Какие документы нужны
+        </div>
+        <div class="section-body">
+            <div class="steps-list">
+                <div class="step-item">
+                    <span class="step-num">1</span>
+                    <span><strong>Заявление</strong> — бланк на постановку авто на учет (скачайте заранее или заполните на месте)</span>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">2</span>
+                    <span><strong>Договор купли-продажи (ДКП)</strong> — <a href="{% url 'gai:index' %}">скачайте бесплатно</a> в 3 экземплярах</span>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">3</span>
+                    <span><strong>Паспорт гражданина РБ</strong> (действующий)</span>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">4</span>
+                    <span><strong>«Обрезанный» техпаспорт</strong> (старый, от продавца)</span>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">5</span>
+                    <span><strong>Снятые номерные знаки</strong> (сдаются в МРО)</span>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">6</span>
+                    <span><strong>Чек об оплате госпошлины</strong> (если платили не через ЕРИП)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <span class="icon">&#128221;</span>
+            Пошаговая инструкция постановки на учет
+        </div>
+        <div class="section-body">
+            <div class="steps-list">
+                <div class="step-item">
+                    <span class="step-num">1</span>
+                    <span><strong>Пройдите сверку номеров (VIN-кодов)</strong> — на площадке МРО. Убедитесь, что номера читаемы</span>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">2</span>
+                    <span><strong>Снимите номера с машины</strong> и вернитесь в здание</span>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">3</span>
+                    <span><strong>Оплатите госпошлины</strong> — через ЕРИП (раздел МВД → ГАИ → Регистрация транспорта) или через кассу банка</span>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">4</span>
+                    <span><strong>Подайте документы в регистрационное окно:</strong> заявление с отметкой о сверке, чек, паспорт, ДКП, старый техпаспорт, номера, полис ОСАГО</span>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">5</span>
+                    <span><strong>Получите новые документы</strong> в назначенный день: новый техпаспорт, номера и разрешение («дазвол»)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <span class="icon">&#128176;</span>
+            Размер госпошлин (в базовых величинах)
+        </div>
+        <div class="section-body">
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 16px;">
+                Расчёт по Указу Президента РБ №200 от 26.04.2010. На 2026 год 1 БВ = 40 BYN.
+            </p>
+            <div class="price-table">
+                <div class="price-row">
+                    <span>Оформление заявления о регистрации</span>
+                    <strong>0,08 БВ (3,20 BYN)</strong>
+                </div>
+                <div class="price-row">
+                    <span>Компьютерные услуги</span>
+                    <strong>0,04 БВ (1,60 BYN)</strong>
+                </div>
+                <div class="price-row">
+                    <span>Выдача техпаспорта</span>
+                    <strong>1 БВ (40 BYN)</strong>
+                </div>
+                <div class="price-row">
+                    <span>Выдача номерных знаков (новые или б/у)</span>
+                    <strong>Зависит от выбора</strong>
+                </div>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 12px;">
+                Оплатить все услуги можно через ЕРИП: раздел МВД → ГАИ → Регистрация транспорта, выберите свой город и нужные услуги.
+            </p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <span class="icon">&#128260;</span>
+            Как переоформить авто без смены номеров
+        </div>
+        <div class="section-body">
+            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+                Это возможно при соблюдении <strong>двух условий</strong>:
+            </p>
+            <ul class="info-list">
+                <li>Номера на авто должны быть <strong>актуального образца</strong></li>
+                <li>Вы (покупатель) должны быть зарегистрированы в <strong>том же населенном пункте</strong>, который обслуживает МРО ГАИ, где авто стоит на учете</li>
+            </ul>
+            <p style="color: var(--text-secondary); line-height: 1.7; margin-top: 16px;">
+                <strong>Алгоритм (этап с транзитами пропускается):</strong>
+            </p>
+            <ul class="info-list">
+                <li>Продавец и покупатель вместе приезжают в МРО ГАИ</li>
+                <li>Подписывают ДКП и заявление на перерегистрацию</li>
+                <li>Оплачивают услуги</li>
+                <li>Проходят сверку номеров</li>
+                <li>Подают весь пакет документов (включая старые номера) в окно</li>
+                <li>Новому владельцу выдают новый техпаспорт и <strong>те же номера</strong> (они переоформляются на вас)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <span class="icon">&#9200;</span>
+            Сроки
+        </div>
+        <div class="section-body">
+            <ul class="info-list">
+                <li><strong>Постановка на учет после покупки</strong> — в течение 30 дней (если авто снято с учета)</li>
+                <li><strong>Перерегистрация</strong> — в течение 10 дней после подписания ДКП</li>
+                <li><strong>Сверка VIN на площадке</strong> — 10–15 минут</li>
+                <li><strong>Оформление в МРО</strong> — от 30 минут до 1 рабочего дня</li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <div class="btn-group">
+        <a href="{% url 'gai:index' %}" class="btn btn-back">
+            &#8592; На главную
+        </a>
+        <a href="{% url 'gai:index' %}" class="btn btn-primary">
+            &#128196; Сформировать ДКП
+        </a>
+        <a href="{% url 'gai:download_page' %}" class="btn btn-back">
+            &#128221; Скачать бланк ДКП
+        </a>
+    </div>
+{% endblock %}

@@ -115,6 +115,20 @@ def favicon_view(request):
     return FileResponse(open(favicon_path, 'rb'), content_type='image/x-icon')
 
 
+
+
+def privacy_policy(request):
+    return render(request, 'documents_generator/privacy.html')
+
+
+def registration(request):
+    return render(request, 'documents_generator/registration.html')
+
+
+def deregistration(request):
+    return render(request, 'documents_generator/deregistration.html')
+
+
 def download_page(request):
     return render(request, 'documents_generator/download.html')
 
@@ -126,8 +140,18 @@ def download_template(request):
     return response
 
 
+def download_deregistration_template(request):
+    doc_path = os.path.join(DOC_PATH, 'Форма заявления на снятия с учета автомобиля.docx')
+    response = FileResponse(open(doc_path, 'rb'), content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+    response['Content-Disposition'] = 'attachment; filename="Форма заявления на снятия с учета автомобиля.docx"'
+    return response
+
 
 def generate_document(request):
+    if request.POST.get('consent') != 'on':
+        messages.error(request, 'Необходимо дать согласие на обработку персональных данных.')
+        return redirect('gai:index')
+
     agreement_place = request.POST.get('agreement_place')
     salesman_lastname = request.POST.get('salesman_lastname')
     salesman_firstname = request.POST.get('salesman_firstname')
@@ -243,10 +267,28 @@ def sitemap_xml(request):
         '<priority>0.9</priority>'
         '</url>'
         '<url>'
+        '<loc>https://autoblank.by/registration</loc>'
+        '<lastmod>' + today + '</lastmod>'
+        '<changefreq>monthly</changefreq>'
+        '<priority>0.8</priority>'
+        '</url>'
+        '<url>'
+        '<loc>https://autoblank.by/deregistration</loc>'
+        '<lastmod>' + today + '</lastmod>'
+        '<changefreq>monthly</changefreq>'
+        '<priority>0.8</priority>'
+        '</url>'
+        '<url>'
         '<loc>https://autoblank.by/feedback</loc>'
         '<lastmod>' + today + '</lastmod>'
         '<changefreq>monthly</changefreq>'
         '<priority>0.7</priority>'
+        '</url>'
+        '<url>'
+        '<loc>https://autoblank.by/privacy-policy</loc>'
+        '<lastmod>' + today + '</lastmod>'
+        '<changefreq>yearly</changefreq>'
+        '<priority>0.3</priority>'
         '</url>'
         '</urlset>'
     )
