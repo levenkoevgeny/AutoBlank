@@ -15,8 +15,8 @@
     --border-color: #2a2a3a;
     --border-focus: #6c5ce7;
     --text-primary: #ffffff;
-    --text-secondary: #a0a0b0;
-    --text-muted: #6b6b80;
+    --text-secondary: #dcdcdf;
+    --text-muted: #9393a1;
     --accent-primary: #6c5ce7;
     --accent-secondary: #a855f7;
     --accent-gradient: linear-gradient(135deg, #6c5ce7 0%, #a855f7 50%, #ec4899 100%);
@@ -566,6 +566,24 @@ header p {
     margin-bottom: 24px;
 }
 
+.seo-text h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.seo-text h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 20px 0 12px;
+}
+
 .seo-text p {
     color: var(--text-secondary);
     font-size: 0.9rem;
@@ -578,6 +596,27 @@ header p {
 }
 
 .seo-text strong {
+    color: var(--text-primary);
+}
+
+.seo-text ol {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.seo-text ol li {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 10px;
+    padding-left: 4px;
+}
+
+.seo-text ol li:last-child {
+    margin-bottom: 0;
+}
+
+.seo-text ol li strong {
     color: var(--text-primary);
 }
 
