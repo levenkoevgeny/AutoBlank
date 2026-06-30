@@ -52,6 +52,8 @@ body {
     min-height: 100vh;
     padding: 20px;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 body::before {
@@ -74,6 +76,33 @@ body::before {
     margin: 0 auto;
     position: relative;
     z-index: 1;
+    flex: 1;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    position: relative;
+    z-index: 10;
+}
+
+.nav-home {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: opacity 0.2s;
+}
+
+.nav-home:hover {
+    opacity: 0.8;
 }
 
 /* Header */

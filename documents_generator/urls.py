@@ -15,7 +15,6 @@ urlpatterns = [
     path('registration', views.registration, name='registration'),
     path('deregistration', views.deregistration, name='deregistration'),
     path('sitemap.xml', views.sitemap_xml, name='sitemap_xml'),
-    path('privacy-policy', views.privacy_policy, name='privacy-policy'),
     path('yandex_519162dd5d6ded9a.html', views.yandex_servise, name='yandex_servise'),
     path('favicon.ico', views.favicon_view, name='favicon_view'),
     path('robots.txt', TemplateView.as_view(

@@ -76,6 +76,33 @@
     <div class="container">
         {% block content %}{% endblock %}
     </div>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <strong>AutoBlank</strong>
+                <p>Бесплатный онлайн-генератор документов для купли-продажи автомобилей.</p>
+            </div>
+            <div class="footer-col">
+                <strong>Навигация</strong>
+                <ul>
+                    <li><a href="{% url 'gai:index' %}">Главная</a></li>
+                    <li><a href="{% url 'gai:download_page' %}">Скачать шаблон ДКП</a></li>
+                    <li><a href="{% url 'gai:registration' %}">Регистрация авто</a></li>
+                    <li><a href="{% url 'gai:deregistration' %}">Снятие с учета</a></li>
+                    <li><a href="{% url 'gai:feedback' %}">Предложения и отзывы</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <strong>Контакты</strong>
+                <ul>
+                    <li>AutoBlank</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 AutoBlank. Все права защищены. <a href="{% url 'gai:privacy_policy' %}">Политика обработки персональных данных</a></p>
+        </div>
+    </footer>
     <script>
         (function() {
             var btn = document.getElementById('themeToggle');
