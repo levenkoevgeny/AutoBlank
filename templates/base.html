@@ -100,9 +100,13 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 AutoBlank. Все права защищены. <a href="{% url 'gai:privacy_policy' %}">Политика обработки персональных данных</a></p>
+            <p>&copy; 2026 AutoBlank. Все права защищены. <br class="footer-br"> <a href="{% url 'gai:privacy_policy' %}">Политика обработки персональных данных</a>. <a href="{% url 'gai:cookie_consent' %}">Cookie</a></p>
         </div>
     </footer>
+    <div class="cookie-consent" id="cookieConsent">
+        <p>Мы используем файлы cookie для аналитики и улучшения работы сайта. Подробнее в <a href="{% url 'gai:cookie_consent' %}">политике использования cookie</a>.</p>
+        <button class="btn btn-primary" id="cookieAccept">Принять</button>
+    </div>
     <script>
         (function() {
             var btn = document.getElementById('themeToggle');
@@ -120,6 +124,21 @@
                 var isLight = html.classList.contains('light-theme');
                 localStorage.setItem('theme', isLight ? 'light' : 'dark');
                 updateIcon();
+            });
+        })();
+    </script>
+    <script>
+        (function() {
+            var consent = document.getElementById('cookieConsent');
+            var acceptBtn = document.getElementById('cookieAccept');
+
+            if (!localStorage.getItem('cookieConsent')) {
+                consent.classList.add('show');
+            }
+
+            acceptBtn.addEventListener('click', function() {
+                localStorage.setItem('cookieConsent', 'accepted');
+                consent.classList.remove('show');
             });
         })();
     </script>

@@ -12,6 +12,7 @@ urlpatterns = [
     path('download-deregistration-template', views.download_deregistration_template, name='download_deregistration_template'),
     path('download', views.download_page, name='download_page'),
     path('privacy-policy', views.privacy_policy, name='privacy_policy'),
+    path('cookie-consent', views.cookie_consent, name='cookie_consent'),
     path('registration', views.registration, name='registration'),
     path('deregistration', views.deregistration, name='deregistration'),
     path('sitemap.xml', views.sitemap_xml, name='sitemap_xml'),

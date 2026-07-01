@@ -121,6 +121,10 @@ def privacy_policy(request):
     return render(request, 'documents_generator/privacy.html')
 
 
+def cookie_consent(request):
+    return render(request, 'documents_generator/cookie-consent.html')
+
+
 def registration(request):
     return render(request, 'documents_generator/registration.html')
 
@@ -286,6 +290,12 @@ def sitemap_xml(request):
         '</url>'
         '<url>'
         '<loc>https://autoblank.by/privacy-policy</loc>'
+        '<lastmod>' + today + '</lastmod>'
+        '<changefreq>yearly</changefreq>'
+        '<priority>0.3</priority>'
+        '</url>'
+        '<url>'
+        '<loc>https://autoblank.by/cookie-consent</loc>'
         '<lastmod>' + today + '</lastmod>'
         '<changefreq>yearly</changefreq>'
         '<priority>0.3</priority>'
